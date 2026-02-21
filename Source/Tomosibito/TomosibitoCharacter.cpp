@@ -5,6 +5,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -42,6 +43,16 @@ ATomosibitoCharacter::ATomosibitoCharacter()
 	// Configure character movement
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
 	GetCharacterMovement()->AirControl = 0.5f;
+}
+
+void ATomosibitoCharacter::BeginPlay( ) {
+	Super::BeginPlay( );
+
+	if ( APlayerController* PC = Cast<APlayerController>( GetController( ) ) ) {
+		if ( UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>( PC->GetLocalPlayer( ) ) ) {
+			Subsystem->AddMappingContext( DefaultMappingContext, 0 );
+		}
+	}
 }
 
 void ATomosibitoCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
