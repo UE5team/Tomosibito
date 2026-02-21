@@ -9,3 +9,6 @@ DerivedDataCache/
 Intermediate/
 Saved/
 *.sln
+
+# DCC
+/_DCC/
