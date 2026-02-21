@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "InputMappingContext.h"
 #include "TomosibitoCharacter.generated.h"
 
 class UInputComponent;
@@ -23,6 +24,7 @@ class ATomosibitoCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+
 	/** Pawn mesh: first person view (arms; seen only by self) */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	USkeletalMeshComponent* FirstPersonMesh;
@@ -30,6 +32,12 @@ class ATomosibitoCharacter : public ACharacter
 	/** First person camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCameraComponent;
+
+protected:
+	virtual void BeginPlay( ) override;
+
+	UPROPERTY( EditAnywhere, Category = "Input" )
+	UInputMappingContext* DefaultMappingContext;
 
 protected:
 
