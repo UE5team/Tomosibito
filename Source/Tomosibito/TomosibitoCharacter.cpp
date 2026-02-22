@@ -49,9 +49,14 @@ void ATomosibitoCharacter::BeginPlay( ) {
 	Super::BeginPlay( );
 
 	if ( APlayerController* PC = Cast<APlayerController>( GetController( ) ) ) {
-		if ( UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>( PC->GetLocalPlayer( ) ) ) {
+		if ( UEnhancedInputLocalPlayerSubsystem* Subsystem =
+			 ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>( PC->GetLocalPlayer( ) ) ) {
 			Subsystem->AddMappingContext( DefaultMappingContext, 0 );
 		}
+
+		// ã‰ºŽ‹“_§ŒÀ
+		PC->PlayerCameraManager->ViewPitchMin = -30.0f;
+		PC->PlayerCameraManager->ViewPitchMax = 30.0f;
 	}
 }
 
