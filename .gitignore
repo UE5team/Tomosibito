@@ -2,6 +2,7 @@
 .vs/
 *.VC.db
 *.VC.opendb
+Plugins/VisualStudioTools/
 
 # Unreal Engine
 Binaries/
