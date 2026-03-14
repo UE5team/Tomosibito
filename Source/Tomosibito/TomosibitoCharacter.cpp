@@ -109,7 +109,7 @@ void ATomosibitoCharacter::DoAim(float Yaw, float Pitch)
 	{
 		// pass the rotation inputs
 		AddControllerYawInput(Yaw);
-		AddControllerPitchInput(-Pitch);
+		AddControllerPitchInput(Pitch);
 	}
 }
 
